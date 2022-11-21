@@ -1,0 +1,103 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: oxygen;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-image: linear-gradient(45deg, #222, #444, black);
+}
+
+main {
+  border: black solid 1px;
+  box-shadow: 0 0 20px 0 black;
+  padding: 1rem;
+}
+
+#time {
+  display: flex;
+  gap: 40px;
+  color: sandybrown;
+}
+
+/*
+Aqui é onde "AM/PM" fica acima dos dados de tempo
+Isso acontece do "display" para baixo
+*/
+#time .circle {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#time div {
+  /* Os círculos svg no html não guardam os dados de hora, se desativado */
+  position: absolute;
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+main .day-or-night {
+  /* position: relative; */
+  /* transform: translateX(-20px); */
+  color: sandybrown;
+  text-shadow: 0 0 10px sandybrown;
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+#time .circle svg {
+  position: relative;
+  width: 150px;
+  height: 150px;
+
+  /* A barra sai do lugar, se não for nessa rotação */
+  transform: rotate(270deg);
+}
+
+/* Edição dos círculos para ficarem apenas com borda */
+#time .circle svg circle {
+  width: 100%;
+  height: 100%;
+  fill: transparent;
+  stroke: black;
+  stroke-width: 4;
+  transform: translate(5px, 5px);
+}
+
+#time .circle svg circle:nth-child(2) {
+  /* Cor da borda do círculo */
+  stroke: var(--clr);
+  /* Tamanho da borda do círculo */
+  stroke-dasharray: 440;
+}
+
+/* Adição dos "id": [stroke-hr, stroke-mnt, stroke-sec] */
+
+.dots {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+/* O ponteiro de círculo */
+.dots::before {
+  content: '';
+  position: absolute;
+  top: -1px; /* Centralizar ponteiro na borda */
+  width: 15px;
+  height: 15px;
+  background: var(--clr);
+  border-radius: 50%;
+  box-shadow: 0 0 20px var(--clr);
+}
